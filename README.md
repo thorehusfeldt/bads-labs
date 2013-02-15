@@ -18,10 +18,3 @@ LaTeX. To make an individual lab, run
 
     cd <labname>/docs
     make
-
-To make all labs, just
-
-    make
-
-in the root, which will put all PDFs into the root level directory
-`docs`.
