@@ -1,0 +1,121 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath,amsthm}
+
+\input{vc.tex}  % For version control
+
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{listings}
+
+\newtheorem{claim}{Claim}[section]
+\title{Connected Components Warmup}
+\date{\GITAuthorDate, rev. \GITAbrHash}
+\author{}
+
+\begin{document}
+\maketitle
+
+\subsection{Description}
+
+This is the first assignment in BADS/SGDS. 
+It is supposed to be very simple; the main objective is to form groups, set up your programming environment, download the textbook's code, find a way to include the book's libraries in you java environment.
+The algorithmic problem itself is very simple and basically already solved in section 1.5 of the textbook:
+Form pairwise connections between sites and at the end report if sites 0 and 1 are in the same component.
+
+\subsection{Input}
+
+The input contains an integer (the number of sites) followed by a sequence of pairs of integers (connections), like the book's example files {\tt tinyUF.txt}, {\tt mediumUF.txt}, and {\tt largeUF.txt}.
+
+\marginpar{
+The contents of {\tt tinyUF.txt}:\\[1ex]
+\begin{tt}
+10\\
+4 3\\
+3 8\\
+6 5\\
+9 4\\
+2 1\\
+8 9\\
+5 0\\
+7 2\\
+6 1\\
+1 0\\
+6 7
+\end{tt}
+}
+
+\subsection{Output}
+
+The string {\tt true} if 0 and 1 belong to the same connected component after forming all connections in the input. 
+Otherwise {\tt false}.
+
+\subsection{Example}
+
+\begin{quotation}
+\begin{verbatim}
+% java UFW < tinyUF.txt
+true
+\end{verbatim}
+\end{quotation}
+
+\subsection{Requirements}
+
+Your class has to be called UFW and reside in a file called {\tt UFW.java}.
+Your class must inlude a single, static main method and nothing else.
+It should refer to one of the union--find data structures from the books; download that code and put it into the same directory as {\tt UFW.java}.
+Do not modify that file.
+Your solution must use as much code from the book as possible---the exercise can be solved by copy--paste and writing one new line of code.
+You have to use {\tt StdOut.println} for output and {\tt StdIn.readInt()} for input.
+Your program must communicate with standard input and output from the command line exactly as shown.
+
+\subsection{Deliverables}
+
+Upload exactly two files:
+
+\begin{enumerate}
+\item the source code of {\tt UFW.java}
+\item A report in PDF. 
+  Use the report skeleton on the next page.
+\end{enumerate}
+
+\subsection{Tips}
+The main difficulty in this exercise is to convince your java setup to find the {\tt StdOut} and {\tt StdIn} classes in the book's standard library.
+This is the main point of this exercise, so take it seriously. 
+Do \emph{not} avoid the issue by simply copying {\tt StdOut.java} into you current directory.
+There are several suggestions for how to do this on the book website, under \emph{Web Resources, Code}.
+You are \emph{strongly encouraged} to use the setups called Windows Command Prompt (manual) or Mac OS X Terminal (manual) or Linux Command Line (manual), depending on which architecture you are on.
+
+\newpage
+\section{Report: Connected Components Warmup}
+
+
+by Alice Cooper and Bob Marley\sidenote{Complete the report by filling
+  in your names and the parts marked $[\ldots]$.
+  Remove the sidenotes in your final hand-in.}
+
+
+\subsection{Results}
+
+\begin{tabular}{ll}
+  \toprule
+  input file & 0 connected to 1? \\
+  \midrule
+  {\tt tinyUF.txt} & yes \\
+  {\tt mediumUF.txt} & $[\ldots]$ \\
+  {\tt largeUF.txt} & $[\ldots]$ \\
+  \bottomrule
+\end{tabular}
+
+\subsection{Methods}
+
+For the union--find data structure we used  $[\ldots]$\footnote{Replace by {\tt QuickFindUF.java} or whatever you actually used.}
+from the textbook. 
+$[\dots]$.\footnote{Add a single sentence motivating your choice of data structure. 
+For instance ``Using blabla instead turned out to take more that 5  blabla on instance blabla.''
+Or ``It didn't make much of a difference.''
+Or ``We didn't have time to try anything else''.}
+
+
+\end{document}
+ 
