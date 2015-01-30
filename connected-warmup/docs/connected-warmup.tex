@@ -82,8 +82,35 @@ Upload exactly two files:
 \subsection{Tips}
 The main difficulty in this exercise is to convince your java setup to find the {\tt StdOut} and {\tt StdIn} classes in the book's standard library.
 This is the main point of this exercise, so take it seriously. 
-Do \emph{not} avoid the issue by simply copying {\tt StdOut.java} into you current directory.
-There are several suggestions for how to do this on the book website, under \emph{Web Resources, Code}.
+
+In fact, before starting with the exercise itself, try to make the following program run:
+
+\begin{quotation}
+\begin{verbatim}
+public class Hello
+{
+  public static void main (String[] args)
+  {
+    StdOut.println("Hello world!");
+  }
+}
+\end{verbatim}
+\end{quotation}
+
+Once that works, change {\tt Hello.java} so that reads you name (in a text file) from Standard Input and returns it to you.
+The functionality should be like this:
+
+\begin{quotation}
+\begin{verbatim}
+% cat myname.txt
+Bob
+% java Hello < myname.txt
+Hello Bob!
+\end{verbatim}
+\end{quotation}
+
+Do \emph{not} avoid the issue by simply copying {\tt StdOut.java} into you current directory, or using {\tt System.out} and {\tt System.in}.
+There are several suggestions for how to set up the book's standard library on the book website, under \emph{Web Resources, Code}.
 You are \emph{strongly encouraged} to use the setups called Windows Command Prompt (manual) or Mac OS X Terminal (manual) or Linux Command Line (manual), depending on which architecture you are on.
 
 \newpage
