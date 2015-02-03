@@ -1,0 +1,267 @@
+\documentclass{tufte-handout}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\input{vc.tex}  % For version control
+
+\title{Giantbook}
+\author{}
+\date{\GITAuthorDate, rev. \GITAbrHash}
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\begin{abstract}Study the structure of social networks in the
+  Erd\H{o}s-Renyi model, such as the emergence of the giant component. 
+  This exercise serves as a very simple client for
+  the Union--Find data structure.
+\end{abstract}
+
+\section{Description}
+A social network consists of individuals and their connections; you
+are welcome to think of the structure of ``friends'' defined by FaceBook.
+In particular, the social networks studied in this exercise are
+symmetric in the sense that if $p$ is connected to $q$ then $q$ is connected
+to $p$.
+(Other networks, such as the structure of ``followers'' on Twitter, are
+not symmetric.)
+
+\begin{marginfigure}
+\tikzset{vertex/.style={minimum size = 3pt, inner sep = 0pt, circle,fill = black}}
+
+\begin{tikzpicture}
+\node at (-1,0) {$T=0$};
+\foreach \a in {0,60,...,300} \node [vertex] (\a) at (\a:.3) {};
+\end{tikzpicture}
+
+\bigskip
+\begin{tikzpicture}
+\node at (-1,0) {$T=1$};
+\foreach \a in {0,60,...,300} \node [vertex] (\a) at (\a:.3) {};
+\draw(60)--(300);
+\end{tikzpicture}
+
+\bigskip
+\begin{tikzpicture}
+\node at (-1,0) {$T=2$};
+\foreach \a in {0,60,...,300} \node [vertex] (\a) at (\a:.3) {};
+\draw(60)--(300);
+\draw(0)--(120);
+\end{tikzpicture}
+
+\bigskip
+\begin{tikzpicture}
+\node at (-1,0) {$T=3$};
+\foreach \a in {0,60,...,300} \node [vertex] (\a) at (\a:.3) {};
+\draw(60)--(300);
+\draw(0)--(120);
+\draw(180)--(240);
+\end{tikzpicture}
+
+\bigskip
+\begin{tikzpicture}
+\node at (-1,0) {$T=4$};
+\foreach \a in {0,60,...,300} \node [vertex] (\a) at (\a:.3) {};
+\draw(60)--(300);
+\draw(0)--(120);
+\draw(180)--(240);
+\draw(60)--(0);
+\end{tikzpicture}
+
+\bigskip
+\begin{tikzpicture}
+\node at (-1,0) {$T=5$};
+\foreach \a in {0,60,...,300} \node [vertex] (\a) at (\a:.3) {};
+\draw(60)--(300);
+\draw(0)--(120);
+\draw(180)--(240);
+\draw(60)--(0);
+\draw(300)--(0);
+\end{tikzpicture}
+
+\bigskip
+\begin{tikzpicture}
+\node at (-1,0) {$T=6$};
+\foreach \a in {0,60,...,300} \node [vertex] (\a) at (\a:.3) {};
+\draw(60)--(300);
+\draw(0)--(120);
+\draw(180)--(240);
+\draw(60)--(0);
+\draw(300)--(0);
+\draw(240)--(0);
+\end{tikzpicture}
+
+\bigskip
+\caption{A tiny evolving network. The \emph{nonisolated} event happens at $T=3$, the giant component emerges at $T=4$, and the whole network becomes connected at $T=6$.} 
+\end{marginfigure}
+
+We are interested in the behaviour of these networks as they grow, \emph{i.e.},
+when connections are added.
+In particular, we want to know at which times the following events occur:
+\begin{description}
+\item[nonisolated]
+  The network is \emph{nonisolated} when everybody has at least one connection.
+\item[giant component] The network has a \emph{giant} component when
+  it contains a component with at least half the individuals.
+\item[connected] The network is connected when everybody is connected
+  to everybody else.
+  In other words, when does the network consists of a single component that contains all  individuals?
+\end{description}
+  We study the dynamics of such a network in a very simple model
+  called the \emph{Erd\H{o}s-Renyi model}, where in the beginning everybody has
+  no connections, and individuals form links completely at random.
+  Clearly, in the beginning, the network is neither nonisolated,
+  connected, nor has a giant component.
+  We want to know when the three events occur, and how the timing
+  depends on $N$, the initial number of individuals.
+
+  Let me be very specific about the random model: In each round,
+  create a connection between two individuals selected uniformly at
+  random.
+  It does not matter if these individuals have been selected in a
+  previous round, of if they are already connected.
+  (To make things easy, they can even be the same individual.)
+
+\subsection{Deliverables}
+\begin{enumerate}
+\item Your implementation of {\tt GiantBook.java}.
+\item A modified Union--Find data structure in a separate file.
+	Call this {\tt MyUnionFind.java}. 
+\item A project report in PDF, you are strongly encouraged to use the skeleton on the last page.
+\end{enumerate}
+
+It is important that the functionality of the union--find data
+structure and of the client ({\tt GiantBook.java}) are clearly
+separated.
+In particular, don't put everything in one file.
+Your extensions of the functionality of the abstract data type for
+union--find should be in terms of meaningful, general methods that do not refer to the functionality of the client. 
+\footnote{For instance, {\tt boolean hasGiantComponent()} is not a good method for your union--find data type, because it needs to know how a giant component is defined in this particular application. On the other hand, {\tt int maxComponentSize()} would be a perfectly fine method for a union--find data type that could be useful to many other clients as well.}
+
+\section{Tips}
+
+The simplest event to simulate is \emph{connected}, because
+the Union--Find structure in the book already tells you if there is
+just one component.
+Therefore, I suggest you completely solve the whole exercise for this
+event first, including filling out the relevant table column in the report.
+The book's standard library has useful methods on page 30.
+Make sure it works correctly for very small instances ($N=10$) by
+following the computation step by step (print out what happens, check
+it by hand).
+
+After that, study the emergence of the giant component.
+This involves modifying the Union--Find implementations in the book.
+I needed four lines of code.
+
+Finally, study the nonisolated individuals.
+There is an obvious way of changing the Union--Find structure to detect
+the existence of isolated individuals (simply run through all elements
+and see if the size of their component is $1$), but that will probably
+be too slow to be useful for large $N$.
+You need to do something that is both simpler and much faster.
+Again, I can do this in four lines of code.
+
+Oh, and one more thing: it's probably a good idea to print the values
+using scientific notation, i.e., like {\tt 6.96e+02}.
+You can use the {\tt StdOut.printf} method with format string
+``{\tt \%.2e }''  for that.
+
+\subsection{Questions}
+\begin{description}
+\item[My programme is slow.] You should be able to detect the emergence
+  of a giant component for $N=10,000,000$ within seconds on a modern
+  machine.
+  If not, something is wrong.
+  I am using weighted quick-union.
+\item[What about those standard deviations?]
+	This is standard scientific practice.
+  When we perform computational experiments that involve randomness,
+  the results depend on the random choices.
+  Therefore we can't just run your experiment once and report the result.
+  Instead, the experimented is repeated $T$ times, and we report the average
+  (or ``mean'') of those experiments.
+  So how large should $T$ be?
+  That's where the standard deviation comes in.\sidenote{Read Wikipedia's entry on standard deviation for more.}
+  This is not a course in statistics, so we won't make a big deal out
+  of this, but your standard deviation should be an order of magnitude
+  smaller than the mean value you report.
+  For example, if you report mean 536, your standard deviation should
+  be at most something like 63, but not 251.
+  Otherwise you need to increase $T$.
+  For small experiments (say, $N=10$) this is not important.
+  The standard library has methods for both computing both the mean and standard
+  deviation of a sequence of values {\tt StdStats}, so you don't write any code for this.
+\end{description}
+
+\section{Perspective}
+
+Want to learn more?
+You can read about the Erd\H{o}s--R\'enyi model or more advanced models for
+social networks like the Watts--Strogatz model at Wikipedia.
+You can change your simulation to use that model instead, for example,
+and see what happens.
+
+If you don't like the random graph models, check out the Stanford
+Network Analysis Project for real life data with large datasets.
+For example, running your code on the (famous) Enron email network
+should give the same value for the size of the largest component
+(called WCC in the dataset statistics table.)
+
+\newpage
+\section{Giantbook Report}
+
+
+by Alice Cooper and Bob Marley\sidenote{Complete the report by filling
+  in your names and the parts marked $[\ldots]$.
+  Remove the sidenotes in your final hand-in.}
+
+
+\subsection{Results}
+
+The following table summarises our results.
+It shows the average number of random connections needed before the emergence of the giant component (``giant''), the disappearance of the last isolated individual (``no isolated''), and when the network becomes connected (``connect'').
+
+\medskip
+\begin{fullwidth}
+\begin{tabular}{rcccccccc}\toprule
+$N$ & $T$ & giant & (stddev) & no isolated & (stddev) & connected & (stddev)\\\midrule
+
+     100 & 100 & \num{7.15e+01} &5.77 &    \num{2.68e+02} & \num{6.32e+01}  &\num{2.69e+02} & \num{6.3e+01} \\
+    1000 \\
+   \num{e4} \\
+  \num{e5} \\
+ \num{e6} \\
+\num{e7} \\\bottomrule
+\end{tabular}
+\end{fullwidth}
+
+\medskip\noindent
+Our main findings are the following:
+The first thing that happens is that $[\ldots]$ \sidenote{Replace by ``the network becomes connected'' or ``the giant component emerges'' or ``the last invididual becomes nonisolated'', whatever is correct.}, which happens at a time $[\ldots]$ \sidenote{Replace by ``linear'' or ``logarithmic'' or ``quadratic'' or something like that.} in $N$.
+Perhaps surprisingly, two of the events seem to happen simultaneously, namely $[\ldots]$ and $[\ldots]$, which happen at time $[\ldots]$ in $N$.
+
+
+\subsection{Implementation details}
+
+We have based our union--find data type on $[\cdots]${\tt .java} from Sedgewick and Wayne: {\em Algorihthms, 4th ed.}, Addison--Wesley (2011).
+We added a method $[\ldots]$ by adding the following lines to $[\dots]$:\footnote{And so on. Describe your modified union--find data type.
+You are encouraged to include code in this report; hopefully you added just a handful of lines and can explain everything needed to understand your changes in a single paragraph, maybe two. 
+You don't need to explain your \emph{client} code at all.}
+
+Assuming we never run out of memory or heap space, if we would let our algorithm for detecting the emergence of a giant component run for 24 hours, it could compute the answer for $N= [\ldots]$.
+
+We've run the code using a quick-find implementation as well.
+In 1 hour, we were able to handle and instance of size $N=[\ldots]$.
+
+
+
+\subsection{Discussion}
+
+We defined the giant component to have size at least $\alpha N$ for $\alpha = \frac{1}{2}$. \footnote{Remove and/or complete one of the following two sentences.}
+The choice of $\alpha$ is arbitrary, choosing other constants (such as $\alpha=\frac{1}{10}$ or $\alpha=\frac{9}{10}$) gave essentially the same results.
+The choice of constant is important; choosing $[\ldots]$ changes the experiment completely because $[\ldots]$.
+
+\end{document}  
