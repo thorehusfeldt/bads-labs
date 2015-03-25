@@ -75,11 +75,11 @@ Clearly, every string of length $n$ has at most $n-k$ such $k$-grams, but it may
 For instance, the $2$-grams of ABABAA are AB, BA, and AA.
 Both AB and BA appear twice.
 
-For integer $d$, let $h$ be a hash function that maps the set of $k$-grams to the integers $\{0,\ldots,d-1\}$.
+For integer $d$, let $h$ be a hash function that maps the set of $k$-grams to the integers $\{0,\ldots,d-1\}$ .
 For example, in Java, you could define $h(S)$ as
-{\tt S.hashcode() \% d}.
+{\tt (S.hashcode() \% d) }.
 Given a string $S$, define for each $i$ with $0\leq i< d$ the value $p_i$ as the number of $k$-grams $T$ of $S$ for which $h(T) = i$.
-The resulting vector $p=(p_1,\ldots,p_d)$ is called the \emph{profile} of $S$.
+The resulting $d$-dimensional vector $p=(p_0,\ldots,p_{d-1})$ is called the \emph{profile} of $S$.
 We then define the \emph{similarity} of two strings with profiles $p$ and $q$ as
 \[
     \frac{p\cdot q}{\left|p\right| \left|q\right|}\,,
