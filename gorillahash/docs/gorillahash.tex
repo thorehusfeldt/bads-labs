@@ -92,20 +92,19 @@ Why is this this a reasonable definition of similarity?
 First, two identical strings have the same profile.
 More interestingly, two similar strings will have similar profiles: ABACADABRA and BABABLACKSHEEP contain AB the same number of times, both of which contribute to the profile index counting $h(\text{AB})$.
 Assuming uniform hashing, no other $2$-grams are likely to get the same hash value, so the profile index is roughly the same.
-We can then define two profile vectors as similar if they ``point in the same direction.''
-Recall that the angle $\alpha$ between two vectors $p$ and $q$ is defined as \[
+We can then define two profile vectors as similar if they ``point in the same direction,''
+which means that the angle between them is small.
+Recall that the angle $\alpha$ between two vectors $p$ and $q$ is defined as \(
   \cos \alpha =
-    \frac{p\cdot q}{\left|p\right| \left|q\right|}\,.
-    \]
-Further recall that the trigonometric function cosine transforms an angle into a number between $-1$ and $1$, with $\cos\alpha$ being close to $1$ when the angle between $p$ and $q$ is very small.
+    (p\cdot q)/(\left|p\right| \left|q\right|).
+    \)
+Further recall that the trigonometric function cosine transforms an angle into a number between $-1$ and $+1$, with $\cos\alpha$ being close to $1$ when the angle between $p$ and $q$ is very small.
 
 \subsection{Requirements}
 
-Your output will depend on your choice of hash function and several parameters, so I cannot provide sample output.
-In particular, you're on you own for evaluating the correctness of your code.
-
-At the very least, you need to include some kind of documentation that you code for computing the length of a vector, and the angle between two vectors works as expected.
-For example, you can write a couple of unit tests method that calls your {\tt compute\_angle}.
+Your output will depend on your choice of hash function and several parameters, so I cannot provide sample output to help you evaluate the correctness of your code.
+You probably need a few lines of code for basic operations on Euclidean vectors (length, angle).
+That part you should test, even if you didn't write it yourself.\sidenote{Actually, \emph{in particular} if you didn't write it yourself.}
 
 \subsection{Deliverables}
 
@@ -132,9 +131,10 @@ Then there are $24^k$ different $k$-grams, and your profile vector $p$ would be 
 Good luck storing that on your machine for $k=20$, say!
 Also, most of the entries in $p$ would end up being $0$ anyway.
 With hashing, you need only $d$ dimensions.
-So this is a prototypical hashing application:
-Avoid storing a (largely useless) sparse table by hashing it into a much smaller table without losing too much information.
+This is a prototypical hashing application:
+Avoid storing a sparse table by hashing it into a much smaller table without losing too much information.
 
+\medskip
 For comparing protein sequences, one normally uses a more
 precise distance estimate called the \emph{Levenshtein} distance,
 sometimes called \emph{edit distance}.
@@ -187,20 +187,23 @@ by Alice Cooper and Bob Marley\sidenote{Complete the report by filling
 
   Our static method {\tt double cos\_angle(int[] p, int[] q)} computes the cosine of the angle of two vectors of the same length $d$.
   We have tested it on the following examples:
-  \bigskip
 
+  \bigskip\noindent
+{ \small\sf
   \begin{tabular}{cccc}
   \toprule
-  $p$ & $q$ & $d$ & value returned \\\midrule
+  $p$     & $q$     & $d$ & value returned \\\midrule
   $(0,1)$ & $(0,1)$ & $2$ & $\pi$ \\
-  $(0,2)$ & $(0,1)$ & $2$ & $4$\\
+  $(0,1)$ & $(0,2)$ & $2$ & $4$\\
   $(0,1)$ & $(1,0)$ & $2$ & $[\ldots]$\\
-  $(0,1)$ & $(-1,0)$ & $2$ & $[\ldots]$\\
+  $(0,1)$ & $(0,-1)$ & $2$ & $[\ldots]$\\
+  $(0,\ldots,0,1)$ & $(1,0,\ldots,0)$ & $1000$ & $[\ldots]$\\
   $[\ldots]$ \\
   \bottomrule
   \end{tabular}
+}
 
 \bigskip
-  Similarly, the static method {\tt length(int[] p)} computes $[\ldots]$.
+  Similarly, our static method {\tt length(int[] p)} computes $[\ldots]$.
 
 \end{document}
