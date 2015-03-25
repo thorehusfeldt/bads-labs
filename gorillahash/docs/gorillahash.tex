@@ -128,7 +128,7 @@ The details are slightly different---if you want to read up on this, start with 
 Why don't we just compute the profiles of the $k$-grams themselves, instead of their hash values?
 The problem is that the profiles become too large.
 Assume for a moment that there are only 24 letters in the alphabet.
-Then there are $24k$ different $k$-grams, and your profile vector $p$ would be $24k$-dimensional.
+Then there are $24^k$ different $k$-grams, and your profile vector $p$ would be $24^k$-dimensional.
 Good luck storing that on your machine for $k=20$, say!
 Also, most of the entries in $p$ would end up being $0$ anyway.
 With hashing, you need only $d$ dimensions.
