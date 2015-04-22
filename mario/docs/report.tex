@@ -1,0 +1,50 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\pagestyle{empty}
+
+
+\title{Super Vector Mario Report}
+\author{Alice Cooper and Bob Marley}
+
+\begin{document}
+  \maketitle
+
+  \section{Results}
+
+  Here are the paths lengths discovered by our algorithm:\sidenote{%
+  Complete the report by filling in your correct names,
+  filling in the parts marked $[\ldots]$,
+  and changing other parts wherever necessary.
+  For instance, if your implementation passes all tests, then write that.
+  Remove the sidenotes in your final hand-in.
+  }
+
+\bigskip
+  \begin{tabular}{lrl}\toprule
+    Instance & Lenght & Comment  \\\midrule
+    example & 10 &  \\
+    L & 21 & \\
+    donut & 42 \\
+    donut2 & 36 & Seems to be wrong\\
+    eighty & -- & Ran out of time\\
+    $[\ldots]$ \\\bottomrule
+  \end{tabular}
+\bigskip
+
+
+  \section{Implementation details}
+
+  We solve the problem by running Prim's algorithm\sidenote{replace by correct algorithm}
+  on the following graph:
+  Every vertex is a $[\ldots]$.
+
+  To construct the graph, we $[\ldots]$\sidenote{Explain what you do. Three sentences are a lot.}
+
+  Our total running time is $[\ldots]$ inputs with $r$ rows and $c$ columns.
+
+\end{document}
