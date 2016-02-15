@@ -20,8 +20,8 @@
 \end{abstract}
 
 \section{Description}
-A social network consists of individuals and their connections; you
-are welcome to think of the structure of ``friends'' defined by FaceBook.
+A \emph{social network} consists of \emph{individuals}, some of which are \emph{linked}. 
+You are welcome to think of the structure of ``friends'' defined by FaceBook.
 In particular, the social networks studied in this exercise are
 symmetric in the sense that if $p$ is connected to $q$ then $q$ is connected
 to $p$.
@@ -94,35 +94,34 @@ not symmetric.)
 \end{tikzpicture}
 
 \bigskip
-\caption{A tiny evolving network. The \emph{nonisolated} event happens at $T=3$, the giant component emerges at $T=4$, and the whole network becomes connected at $T=6$.} 
+\caption{A tiny evolving network of 6 individuals.
+ The \emph{nonisolated} event happens at $T=3$, the giant component emerges at $T=4$, and the whole network becomes connected at $T=6$.} 
 \end{marginfigure}
 
-We are interested in the behaviour of these networks as they grow, \emph{i.e.},
-when connections are added.
+We need some standard terminology from network theory:
+An individual is \emph{isolated} if it not link to any other individual.
+Two individuals $u$ and $v$ are \emph{connected} if there is a sequence of indviduals $v_0,\ldots,v_k$ with $v_0=u$ and $v_k=v$ such that $v_{i-1}$ and $v_i$ are linked for each $i\in\{1,\ldots,k\}$.
+A \emph{connected component} is a maximal subset of connected individuals.
+
+We are interested in the behaviour of networks as they grow when links are added at random.
 In particular, we want to know at which times the following events occur:
 \begin{description}
 \item[nonisolated]
-  The network is \emph{nonisolated} when everybody has at least one connection.
-\item[giant component] The network has a \emph{giant} component when
-  it contains a component with at least half the individuals.
-\item[connected] The network is connected when everybody is connected
-  to everybody else.
-  In other words, when does the network consists of a single component that contains all  individuals?
+  A network becomes \emph{nonisolated} when it has no isolated individuals.
+\item[giant component] A network has a \emph{giant component} when
+  it contains a connected component with at least half the individuals.
+\item[connected] The network becomes connected when every individual is connected
+  to all other individuals.
 \end{description}
   We study the dynamics of such a network in a very simple model
-  called the \emph{Erd\H{o}s-Renyi model}, where in the beginning everybody has
-  no connections, and individuals form links completely at random.
-  Clearly, in the beginning, the network is neither nonisolated,
-  connected, nor has a giant component.
-  We want to know when the three events occur, and how the timing
+  called the \emph{Erd\H{o}s-Renyi model}.
+  In this model, there are $N$ individuals, all are isolated in the beginning, and links are formed completely at random.
+  We want to know when the three events occur, and in which way the timing
   depends on $N$, the initial number of individuals.
 
-  Let me be very specific about the random model: In each round,
-  create a connection between two individuals selected uniformly at
-  random.
-  It does not matter if these individuals have been selected in a
-  previous round, of if they are already connected.
-  (To make things easy, they can even be the same individual.)
+  Let me be very specific about the random model:
+  In each round, select two individuals $u$ and $v$ uniformly at random.
+  If $u\neq v$ and $u$ and $v$ are not yet linked, then create a link between them.
 
 \subsection{Deliverables}
 \begin{enumerate}
@@ -136,8 +135,7 @@ It is important that the functionality of the union--find data
 structure and of the client ({\tt GiantBook.java}) are clearly
 separated.
 In particular, don't put everything in one file.
-Your extensions of the functionality of the abstract data type for
-union--find should be in terms of meaningful, general methods that do not refer to the functionality of the client. 
+Your extensions of the functionality of the abstract data type for union--find should be formulated in terms of meaningful, general methods that do not refer to the functionality of the client. 
 \footnote{For instance, {\tt boolean hasGiantComponent()} is not a good method for your union--find data type, because it needs to know how a giant component is defined in this particular application. On the other hand, {\tt int maxComponentSize()} would be a perfectly fine method for a union--find data type that could be useful to many other clients as well.}
 
 \section{Tips}
@@ -165,9 +163,9 @@ You need to do something that is both simpler and much faster.
 Again, I can do this in four lines of code.
 
 Oh, and one more thing: it's probably a good idea to print the values
-using scientific notation, i.e., like {\tt 6.96e+02}.
+using scientific notation, \emph{i.e.}, like {\tt 6.96e+02}.
 You can use the {\tt StdOut.printf} method with format string
-``{\tt \%.2e }''  for that.
+``{\tt \%.2e}''  for that.
 
 \subsection{Questions}
 \begin{description}
@@ -177,9 +175,9 @@ You can use the {\tt StdOut.printf} method with format string
   If not, something is wrong.
   I am using weighted quick-union.
 \item[What about those standard deviations?]
-	This is standard scientific practice.
-  When we perform computational experiments that involve randomness,
-  the results depend on the random choices.
+	Reporting the result of random experiments using means and standard deviations is standard scientific practice.
+  When performing experiments that involve randomness,
+  the results will depend on the random choices.
   Therefore we can't just run your experiment once and report the result.
   Instead, the experimented is repeated $T$ times, and we report the average
   (or ``mean'') of those experiments.
@@ -199,16 +197,11 @@ You can use the {\tt StdOut.printf} method with format string
 \section{Perspective}
 
 Want to learn more?
-You can read about the Erd\H{o}s--R\'enyi model or more advanced models for
-social networks like the Watts--Strogatz model at Wikipedia.
-You can change your simulation to use that model instead, for example,
-and see what happens.
+You can read about the Erd\H{o}s--R\'enyi model or more advanced models for social networks like the Watts--Strogatz model at Wikipedia.
+You can change your simulation to use that model instead, for example, and see what happens.
 
-If you don't like the random graph models, check out the Stanford
-Network Analysis Project for real life data with large datasets.
-For example, running your code on the (famous) Enron email network
-should give the same value for the size of the largest component
-(called WCC in the dataset statistics table.)
+If you don't like the random graph models, check out the Stanford Network Analysis Project for real life data with large datasets.
+For example, running your code on the (famous) Enron email network should give the same value for the size of the largest component (called WCC in the dataset statistics table.)
 
 \newpage
 \section{Giantbook Report}
@@ -246,7 +239,7 @@ Perhaps surprisingly, two of the events seem to happen simultaneously, namely $[
 
 \subsection{Implementation details}
 
-We have based our union--find data type on $[\cdots]${\tt .java} from Sedgewick and Wayne: {\em Algorihthms, 4th ed.}, Addison--Wesley (2011).
+We have based our union--find data type on $[\cdots]${\tt .java} from Sedgewick and Wayne: {\em Algorithms, 4th ed.}, Addison--Wesley (2011).
 We added a method $[\ldots]$ by adding the following lines to $[\dots]$:\footnote{And so on. Describe your modified union--find data type.
 You are encouraged to include code in this report; hopefully you added just a handful of lines and can explain everything needed to understand your changes in a single paragraph, maybe two. 
 You don't need to explain your \emph{client} code at all.}
