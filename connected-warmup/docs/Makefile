@@ -13,7 +13,7 @@ vc.tex: ../../.git/logs/HEAD
 	git log -1 --date="short" --format="format:\
 		\\gdef\\GITAbrHash{%h}\
 		\\gdef\\GITAuthorDate{%ad}\
-		\\gdef\\GITAuthorName{%an}" >> vc.tex
+		\\gdef\\GITAuthorName{%an}" $(latexfile).tex >> vc.tex
 
 clean:
 	git clean -xfd
