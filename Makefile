@@ -1,7 +1,3 @@
-
-
-#latexfile = connected-warmup
-
 all: congress/docs/congress.pdf \
 	mario/docs/mario.pdf \
 	connected-warmup/docs/connected-warmup.pdf \
@@ -14,3 +10,8 @@ all: congress/docs/congress.pdf \
 %.pdf : %.tex Makefile createpdf.sh .git/index
 	bash createpdf.sh $@
 
+congress/docs/congress.pdf: congress/docs/congressphoto.pdf
+
+gorillahash/docs/gorillahash.pdf: gorillahash/docs/sea_cucumber.png
+
+mario/docs/mario.pdf: mario/docs/mario.png mario/docs/racetrack.pdf
