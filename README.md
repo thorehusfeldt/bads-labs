@@ -14,7 +14,12 @@ Installation
 ------------
 
 To make the documentation, you need an up-to-date (2012) version of
-LaTeX. To make an individual lab, run
+LaTeX. 
 
-    cd <labname>/docs
-    make
+To create all labs:
+   make all
+
+To make an individual lab, run:
+    make <labname>/docs/<labname>.pdf
+
+
