@@ -1,4 +1,4 @@
-all: congress/docs/congress.pdf \
+ALLPDF=congress/docs/congress.pdf \
 	mario/docs/mario.pdf \
 	connected-warmup/docs/connected-warmup.pdf \
 	mario/docs/report.pdf \
@@ -7,7 +7,12 @@ all: congress/docs/congress.pdf \
 	gorillahash/docs/gorillahash.pdf\
 	runsort/docs/runsort.pdf
 
-%.pdf : %.tex Makefile createpdf.sh .git/index
+all: $(ALLPDF)
+
+clean:
+	rm -f $(ALLPDF) */docs/{vc.tex,*.{aux,log}}
+
+%.pdf : %.tex
 	bash createpdf.sh $@
 
 congress/docs/congress.pdf: congress/docs/congressphoto.pdf
