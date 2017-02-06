@@ -24,9 +24,9 @@ for pdfname in $*; do
         if [ -z "$GITSTATUS" ]; then
             echo uploading $basename
             curl -s -u $BITBUCKETLOGIN -X POST "https://api.bitbucket.org/2.0/repositories/rikj/bads-labs/downloads" -F files=@"$basename.pdf"
-        else
-            touch -m -r "$basename.tex" "$basename.pdf"
-            touch -A -01 "$basename.pdf"
+        #else
+            #touch -m -r "$basename.tex" "$basename.pdf"
+            #touch -A -01 "$basename.pdf"
         fi
     fi
     )
