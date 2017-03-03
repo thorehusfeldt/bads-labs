@@ -5,7 +5,8 @@ ALLPDF=congress/docs/congress.pdf \
 	giantbook/docs/giantbook.pdf \
 	randomqueue/docs/randomqueue.pdf\
 	gorillahash/docs/gorillahash.pdf\
-	runsort/docs/runsort.pdf
+	runsort/docs/runsort.pdf\
+	hashpipe/docs/hashpipe.pdf
 
 all: $(ALLPDF)
 
