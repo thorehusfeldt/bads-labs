@@ -100,7 +100,7 @@ not symmetric.)
 
 We need some standard terminology from network theory:
 An individual is \emph{isolated} if it not link to any other individual.
-Two individuals $u$ and $v$ are \emph{connected} if there is a sequence of indviduals $v_0,\ldots,v_k$ with $v_0=u$ and $v_k=v$ such that $v_{i-1}$ and $v_i$ are linked for each $i\in\{1,\ldots,k\}$.
+Two individuals $u$ and $v$ are \emph{connected} if there is a sequence of individuals $v_0,\ldots,v_k$ with $v_0=u$ and $v_k=v$ such that $v_{i-1}$ and $v_i$ are linked for each $i\in\{1,\ldots,k\}$.
 A \emph{connected component} is a maximal subset of connected individuals.
 
 We are interested in the behaviour of networks as they grow when links are added at random.
@@ -114,7 +114,8 @@ In particular, we want to know at which times the following events occur:
   to all other individuals.
 \end{description}
   We study the dynamics of such a network in a very simple model
-  called the \emph{Erd\H{o}s-Renyi model}.
+  closely related to what is known as the \emph{Erd\H{o}s-Renyi model}.%
+  \footnote{There are actually two random models referred to as \emph{Erd\H{o}s-Renyi model}, and the one we describe and use here is somewhere in the middle. We chose this version because it leads to the simplest algorithms.}
   In this model, there are $N$ individuals, all are isolated in the beginning, and links are formed completely at random.
   We want to know when the three events occur, and in which way the timing
   depends on $N$, the initial number of individuals.
@@ -233,7 +234,7 @@ $N$ & $T$ & giant & (stddev) & no isolated & (stddev) & connected & (stddev)\\\m
 
 \medskip\noindent
 Our main findings are the following:
-The first thing that happens is that $[\ldots]$ \sidenote{Replace by ``the network becomes connected'' or ``the giant component emerges'' or ``the last invididual becomes nonisolated'', whatever is correct.}, which happens at a time $[\ldots]$ \sidenote{Replace by ``linear'' or ``logarithmic'' or ``quadratic'' or something like that.} in $N$.
+The first thing that happens is that $[\ldots]$ \sidenote{Replace by ``the network becomes connected'' or ``the giant component emerges'' or ``the last individual becomes nonisolated'', whatever is correct.}, which happens at a time $[\ldots]$ \sidenote{Replace by ``linear'' or ``logarithmic'' or ``quadratic'' or something like that.} in $N$.
 Perhaps surprisingly, two of the events seem to happen simultaneously, namely $[\ldots]$ and $[\ldots]$, which happen at time $[\ldots]$ in $N$.
 
 

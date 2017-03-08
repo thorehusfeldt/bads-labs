@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for f in `git log -2 --name-only --format=''` #  | grep -e '.tex$'`
+do
+    echo touch $f
+    touch $f
+done

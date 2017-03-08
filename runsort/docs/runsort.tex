@@ -27,7 +27,7 @@
 This exercise asks you to implement a sorting algorithm that we call \emph{runsort}.
 The main goal of the exercise is to expose you to the details of correctly implementing a nontrivial sorting algorithm.
 This includes careful index manipulation, special cases, and memory management.
-The algorithm shares many features with \emph{bottom-up mergesort}, and you are welcome to re-use as much of the code in our textbook\sidenote{R. Sedgewick and K. Wayne, \emph{Algorithms}, 4th ed., Addison--Wesley, 2011.} as you deem useful, in particular from section 2.2.
+The algorithm shares many features with \emph{bottom-up mergesort}, and you are welcome to re-use as much of the code in our textbook\sidenote{R. Sedgewick and K. Wayne, \emph{Algorithms}, 4th ed., Addison--Wesley, 2011.} as you deem useful, in particular from Section~2.2.
 
 \medskip
 A \emph{run} in a subsequence is a maximal sequence of nondecreasing, consecutive elements.
@@ -86,7 +86,7 @@ Follow the conventions used in the textbook:
 \begin{enumerate}
 \item Write a class \texttt{Runsort} that includes a method
 \texttt{public static void sort(Comparable[] a)}.
-\item You must use the method \texttt{less} from the \texttt{Example} class in section 2.1 and  simple array manipulation.
+\item You must use the method \texttt{less} from the \texttt{Example} class in Section 2.1 and  simple array manipulation.
 \footnote{Since runsort isn't an in-place sorting algorithm, we  need an auxiliary array.
 In particular, the \texttt{exch} method from the \texttt{Example} class won't be enough for our purposes.
 Just like for mergesort.}
@@ -96,11 +96,11 @@ Just like for mergesort.}
 \subsection{Tips and comments}
 \begin{enumerate}
 \item As always, do not reinvent the wheel, for your own sake as much as ours.
-For instance, I used the \texttt{merge} method from section 2.2 in the textbook without modification, including the neat trick with a static \texttt{aux} array for auxiliary storage.
-When reusing code, remember to be open about it (for instance, add a comment like ``from Sedgewick and Wayne, section 2.2.'' to your code).\sidenote{Indeed, one of the goals of this exercise is to motivate you to understand what's happening in the book's mergesort code.}
+For instance, I used the \texttt{merge} method from Section 2.2 in the textbook without modification, including the neat trick with a static \texttt{aux} array for auxiliary storage.
+When reusing code, remember to be open about it (for instance, add a comment like ``from Sedgewick and Wayne, Section~2.2.'' to your code).\sidenote{Indeed, one of the goals of this exercise is to motivate you to understand what's happening in the book's mergesort code.}
 \item I solved this exercise using 30 lines of my own code, and maybe 30 lines from \texttt{MergeBU}.
 Most of the time I spent on hunting annoying index mistakes.
-\item Test your code using the client in \texttt{Example} in section 2.1.
+\item Test your code using the client in \texttt{Example} in Section 2.1.
 Make sure you've run your sorting algorithm on \texttt{tiny.txt} and \texttt{words3.txt}, but also on some pathological cases: empty input, 1-letter input, 2-letter input, etc.
 Also, sort something really big.
 \end{enumerate}
@@ -118,9 +118,9 @@ Implement at least one of the following fancy extensions.
 \item \emph{Mirror down-runs.}
   When scanning for runs, also check \emph{decreasing} runs (such as \texttt{ZMFCBA}).
   Whenever you find a decreasing run, revert it in linear time.
-  This trick makes the algorithm run much bfaster on almost-reverse-sorted input.
+  This trick makes the algorithm run much faster on almost-reverse-sorted input.
 \item \emph{Galloping.} Read Peters\sidenote{Tim Peters, \emph{timsort.txt}, bugs.python.org/file4451/timsort.txt. Retrieved 11 March 2014.} or Wikipedia\sidenote{Timsort, \emph{Wikipedia, The Free Encyclopedia}. Wikimedia Foundation, Inc. Retrieved 11 March 2014.}. Good luck!
-\item Draw a visual trace of runsort for each round in the style of the book, e.g., like the ``Visual trace of shellsort'' figure in section 2.1.
+\item Draw a visual trace of runsort for each round in the style of the book, e.g., like the ``Visual trace of shellsort'' figure in Section 2.1.
   (\texttt{StdStats.plotBars} does most the work for you.)
 \end{enumerate}
 

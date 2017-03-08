@@ -1,5 +1,15 @@
-*.synctex.gz
+hashpipe/docs/hashpipe.pdf
+congress/docs/congress.pdf
+connected-warmup/docs/connected-warmup.pdf
+giantbook/docs/giantbook.pdf
+gorillahash/docs/gorillahash.pdf
+mario/docs/mario.pdf
+mario/docs/report.pdf
+randomqueue/docs/randomqueue.pdf
+runsort/docs/runsort.pdf
+x.gz
 *.aux
 *.log
 *.out
 vc.tex
+bitbucketLogin.sh

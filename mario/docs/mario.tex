@@ -10,15 +10,19 @@
 \usetikzlibrary{chains}
 \usetikzlibrary{decorations}
 
+\input{vc.tex}  % For version control
+
+
 \title{Super Vector Mario!}
 \author{Thore Husfeldt}
+\date{\GITAuthorDate, rev. \GITAbrHash}
 
 \begin{document}
 
 \maketitle
 
 \subsection{Description}
-Find paths between given words among the five-letter words of English.
+Find the fastest trace for super mario.
 
 \begin{marginfigure}
 \includegraphics[width = 2in]{mario.png}
@@ -28,7 +32,7 @@ Find paths between given words among the five-letter words of English.
 This games is a variant of \emph{Racetrack} or \emph{Vector Rally} that you may have played in school.\sidenote{You can read about the normal pen-and-pencil version of Vector Rally (with cars, not jumping plumbers) at Wikipedia's entry for {\bf Racetrack (game)}.}
 The game is played on a grid, and the object is to get Mario (a jumping plumber) from a grid position marked ``S'' (for start) to a grid position marked ``F'' (for finish), in as few moves as possible.
 Mario moves by jumping from one position to another, and he may never land on a gray square.
-At any given time, Mario as a velocity $(\Delta x, \Delta y)$ in $x$- and $y$-directions.
+At any given time, Mario has a velocity $(\Delta x, \Delta y)$ in $x$- and $y$-directions.
 In the beginning, he stands still, so his initial velocity is $(0,0)$.
 Each turn, Mario moves from his current location $(x,y)$ to the new location $(x+\Delta x, y+\Delta y)$, provided the new position is not off-road.
 In addition, Mario can increase or decrease his velocity in either direction by $1$.
@@ -51,7 +55,7 @@ Note that unlike what you may have played at school, the ``car'' (Mario) is allo
 
 \subsection{Requirements}
 
-The data directory contains a number of test inputs with known optimal sequence lengths, your algorithm must work correctly on those.\sidenote{There can be many shortest paths, so it makes no sense to specify the words on the path.}
+The data directory contains a number of test inputs with known optimal sequence lengths, your algorithm must work correctly on those.\sidenote{There can be many shortest paths, so it makes no sense to specify the positions on the path.}
 
 \subsection{Deliverables}
 
