@@ -1,2 +1,0 @@
-GetsTwoSeats 2
-GetsOneSeat 1
